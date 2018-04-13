@@ -1,6 +1,7 @@
 package edu.handong.csee.java.Lab09; // the package that consists of SalesReporter and Salesman class. 
 import java.util.Scanner; // get the Scanner class from the package java.util.
-import java.util.ArrayList;
+import java.util.ArrayList; // get the ArrayList class froem the package java.util.
+
 
 /**
  * This is a SalesReporter class.</br>
@@ -49,7 +50,7 @@ public class SalesReporter {
   public void getData()
   {
 	  int i = 0; // set the integer variable, i that is 0.
-	  while(true) // This is a infinite loop
+	  while(true) // This is a infinite loop.
 	  {
 		  
 		  String haha = ""; // set the string variable, haha that is null
@@ -84,9 +85,9 @@ public class SalesReporter {
   {
 	  double sum = 0 ; // set the double variable, sum to calculate sum of Salesmen's Sales.
 	  
-	  for(int i=0; i<mName.size(); i++) // From i to numberOfSalesman. the loop is continued.
+	  for(int i=0; i<mName.size(); i++) // From i to the size of mName arraylist. the loop is continued.
 	  {
-		  sum = sum + salesOfsalesman.get(i); // set the sum variable after add the sales variable
+		  sum = sum + salesOfsalesman.get(i); // set the sum variable after add the sales variable.
 	  }
 	  
 	  averageSales = sum / mName.size(); // calculate the average.
@@ -102,7 +103,7 @@ public class SalesReporter {
    public void getHighestSales()
    {
 	   
-	   for(int i=0; i < salesOfsalesman.size()-1; i++) // From i to (numberOfSalesman-1). the loop is continued.
+	   for(int i=0; i < salesOfsalesman.size()-1; i++) // From i to (the size of salesOfsalesman arraylist) - 1. the loop is continued.
 	      {
 			 if(salesOfsalesman.get(i) < salesOfsalesman.get(i+1)) // if the i salesman's sales is less than (i+1) salesman's sales.
 				 highestSales = salesOfsalesman.get(i+1); // set the (i+1) salesman's sales to double variable.
@@ -118,7 +119,7 @@ public class SalesReporter {
    public void printSalesman()
    {
 	   System.out.println("The following had the highest sales: "); // display the parenthesis.
-	   for(int i=0; i < mName.size();i++)// From i to the length of team array, the loop is continued.
+	   for(int i=0; i < mName.size();i++)// From i to the size of mName arraylist, the loop is continued.
 	   {
 		   if(salesOfsalesman.get(i) == highestSales) // if i salesman's sales is equal to hightestSales.
 		   {
@@ -140,7 +141,7 @@ public class SalesReporter {
 	   }
 	   
 	   System.out.println("The rest performed as follows: "); // display the parenthesis.
-	   for (int i=0; i < mName.size(); i++) // From i to the length of team array, the loop is continued.
+	   for (int i=0; i < mName.size(); i++) // From i to the size of mName arraylist, the loop is continued.
 	   {
 		   
 		   if(salesOfsalesman.get(i) != highestSales) // if i salesman's sales isn't equal to hightestSales.
