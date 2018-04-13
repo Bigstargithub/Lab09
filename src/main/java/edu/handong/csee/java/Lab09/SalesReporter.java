@@ -12,7 +12,7 @@ import java.util.ArrayList; // get the ArrayList class froem the package java.ut
  *
  */
 public class SalesReporter {
-  private double highestSales; // set the double variable, highestSales .
+  private double highestSales; // set the double variable, highestSales.
   private double averageSales; // set the double variable, averageSales.
   private ArrayList<String> mName; // set the String type arraylist, mName. 
   private ArrayList<Double> salesOfsalesman; // set the Double type arraylist, salesOfsalesman.
@@ -53,11 +53,11 @@ public class SalesReporter {
 	  while(true) // This is a infinite loop.
 	  {
 		  
-		  String haha = ""; // set the string variable, haha that is null
+		  String haha = ""; // set the string variable, haha that is null.
 		  Scanner myScanner = new Scanner(System.in); // Prepares to read from the keyboard.
 		  
 		   System.out.println("Enter data for associate number " + (i+1)); // display the parenthesis and integer.
-		   i++;
+		   i++; // increase by 1.
 		   System.out.printf("Enter name: "); // display the parenthesis.
 		   String name = myScanner.nextLine(); // scan the String variable, name. 
 		   
@@ -65,9 +65,9 @@ public class SalesReporter {
 		   double sales = myScanner.nextDouble(); // scan the double variable, sales.
 		
 		   mName.add(name); // add a name variable to the arraylist, mName.
-		   salesOfsalesman.add(sales);// add a sales variable to the arraylist, mName.
+		   salesOfsalesman.add(sales);// add a sales variable to the arraylist, salesOfsalesman.
 		 
-		   System.out.print("Do you want to add the salesman?(Yes/No): "); // display the parenthesis. 
+		   System.out.print("Do you want to add the salesman?(Yes/No): "); // ask whether you add the salesman or not.
 		   haha = myScanner.next(); // scan the String variable, haha.
 		   
 		   if(!haha.equals("yes")) // if haha is not equal to "yes"
@@ -87,10 +87,10 @@ public class SalesReporter {
 	  
 	  for(int i=0; i<mName.size(); i++) // From i to the size of mName arraylist. the loop is continued.
 	  {
-		  sum = sum + salesOfsalesman.get(i); // set the sum variable after add the sales variable.
+		  sum = sum + salesOfsalesman.get(i); // set the sum variable after add i-th value of salesOfsalesman arraylist.
 	  }
 	  
-	  averageSales = sum / mName.size(); // calculate the average.
+	  averageSales = sum / mName.size(); // calculate the average. (sum is divided by the size of mName arraylist.)
 	  System.out.println("Average Sales per associate is $"+averageSales); // display the average.
   }
   
@@ -105,8 +105,8 @@ public class SalesReporter {
 	   
 	   for(int i=0; i < salesOfsalesman.size()-1; i++) // From i to (the size of salesOfsalesman arraylist) - 1. the loop is continued.
 	      {
-			 if(salesOfsalesman.get(i) < salesOfsalesman.get(i+1)) // if the i salesman's sales is less than (i+1) salesman's sales.
-				 highestSales = salesOfsalesman.get(i+1); // set the (i+1) salesman's sales to double variable.
+			 if(salesOfsalesman.get(i) < salesOfsalesman.get(i+1)) // if the i-th value of salesOfsalesman arraylist is less than (i+1)-th value of salesOfsalesman arraylist
+				 highestSales = salesOfsalesman.get(i+1); // set the (i+1)-th value of salesOfsalesman arraylist to double variable.
 		  }
 		  
 		  System.out.println("The highest sales figure is $" + highestSales); // display the Hightest sales.
@@ -121,21 +121,21 @@ public class SalesReporter {
 	   System.out.println("The following had the highest sales: "); // display the parenthesis.
 	   for(int i=0; i < mName.size();i++)// From i to the size of mName arraylist, the loop is continued.
 	   {
-		   if(salesOfsalesman.get(i) == highestSales) // if i salesman's sales is equal to hightestSales.
+		   if(salesOfsalesman.get(i) == highestSales) // if i-th value of salesOfsalesman arraylist is equal to hightestSales.
 		   {
-			   System.out.println("name: " + mName.get(i)); // display i salesman's name.
-			   System.out.println("Sales: "+ salesOfsalesman.get(i)); // display i salesman's sales.
-			   if(salesOfsalesman.get(i) > averageSales) // if i salesman's sales is bigger than average of salesmen's sales
+			   System.out.println("name: " + mName.get(i)); // display i-th value of mName arraylist.
+			   System.out.println("Sales: "+ salesOfsalesman.get(i)); // display i-th value of salesOfsalesman arraylist.
+			   if(salesOfsalesman.get(i) > averageSales) // if i-th value of salesOfsalesman arraylist is bigger than average of salesmen's sales
 			   {
-				   System.out.println(salesOfsalesman.get(i)-averageSales + " above the average."); // display how many above the average.
+				   System.out.println(salesOfsalesman.get(i)-averageSales + " above the average."); // display how many the i-th value of salesOfsalesman arraylist above the average.
 			   }
-			   else if(salesOfsalesman.get(i) == averageSales) // if i salesman's sales is same as average of salesmen's sales
+			   else if(salesOfsalesman.get(i) == averageSales) // ifi-th value of salesOfsalesman arraylist is same as average of salesmen's sales
 			   {
-				   System.out.println(averageSales  + " same the average"); // display the parenthesis.
+				   System.out.println(averageSales  + " same the average"); // display that the i-th value of salesOfsalesman arraylist is same.
 			   }
-			   else // if i salesman's sales is less than average of salesmen's sales
+			   else // if i-th value of salesOfsalesman arraylist is less than average of salesmen's sales.
 			   {
-				   System.out.println(salesOfsalesman.get(i) - averageSales + " below the average"); //display how many below the average.
+				   System.out.println(salesOfsalesman.get(i) - averageSales + " below the average"); //display how many i-th value of salesOfsalesman arraylist below the average.
 			   }
 		   }
 	   }
@@ -144,22 +144,22 @@ public class SalesReporter {
 	   for (int i=0; i < mName.size(); i++) // From i to the size of mName arraylist, the loop is continued.
 	   {
 		   
-		   if(salesOfsalesman.get(i) != highestSales) // if i salesman's sales isn't equal to hightestSales.
+		   if(salesOfsalesman.get(i) != highestSales) // ifi-th value of salesOfsalesman arraylist isn't equal to hightestSales.
 		   {
-               System.out.println("Name: " + mName.get(i)); // display i salesman's name.
-               System.out.println("Sales: "+ salesOfsalesman.get(i));// display i salesman's sales.
+               System.out.println("Name: " + mName.get(i)); // display i-th value of mName arraylist.
+               System.out.println("Sales: "+ salesOfsalesman.get(i));// display i-th value of salesOfsalesman arraylist.
 		   
-		    if(salesOfsalesman.get(i) > averageSales)// if i salesman's sales is bigger than average of salesmen's sales
+		    if(salesOfsalesman.get(i) > averageSales)// if i-th value of salesOfsalesman arraylist is bigger than average of salesmen's sales
 		    {
-			   System.out.println(averageSales - salesOfsalesman.get(i) + " above the average.");// display how many above the average.
+			   System.out.println(averageSales - salesOfsalesman.get(i) + " above the average.");// display how many i-th value of salesOfsalesman arraylist above the average.
 		    }
-		    else if(salesOfsalesman.get(i) == averageSales)// if i salesman's sales is same as average of salesmen's sales
+		    else if(salesOfsalesman.get(i) == averageSales)// if i-th value of salesOfsalesman arraylist is same as average of salesmen's sales
 		    {
-			   System.out.println(averageSales  + " same the average"); // display the parenthesis.
+			   System.out.println(averageSales  + " same the average"); // display that i-th value of salesOfsalesman arraylist is same.
 		    }
-		    else // if i salesman's sales is less than average of salesmen's sales
+		    else // if i-th value of salesOfsalesman arraylist is less than average of salesmen's sales
 		    {
-			   System.out.println(averageSales - salesOfsalesman.get(i) + " below the average"); //display how many below the average.
+			   System.out.println(averageSales - salesOfsalesman.get(i) + " below the average"); //display how many i-th value of salesOfsalesman arraylist below the average.
 		    }
 		   }
 	   }
