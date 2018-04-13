@@ -1,5 +1,6 @@
 package edu.handong.csee.java.Lab09; // the package that consists of SalesReporter and Salesman class. 
 import java.util.Scanner; // get the Scanner class from the package java.util.
+import java.util.ArrayList;
 
 /**
  * This is a SalesReporter class.</br>
@@ -12,8 +13,9 @@ import java.util.Scanner; // get the Scanner class from the package java.util.
 public class SalesReporter {
   private double highestSales; // set the double variable, highestSales .
   private double averageSales; // set the double variable, averageSales.
-  private Salesman[] team; // set the array variable, team.
-  private int numOfSalesman; // set the integer variable, numOfSalesman.
+  private ArrayList<String> mName; // set the String type arraylist, mName. 
+  private ArrayList<Double> salesOfsalesman; // set the Double type arraylist, salesOfsalesman.
+
   /**
    * this is a constructor method.</br>
    * You can input number of salesman.</br>
@@ -21,13 +23,8 @@ public class SalesReporter {
    */
   public SalesReporter()
   {
-	  System.out.printf("Enter number of salesman : "); // display the parenthesis.
-	  Scanner myScanner = new Scanner(System.in); // Prepares to read from the keyboard.
-	  
-	  numOfSalesman = myScanner.nextInt(); // input integer variable.
-	  
-	  Salesman[] team = new Salesman[numOfSalesman]; // instantiate Salesman class as a array.
-	  
+	   mName = new ArrayList<String>(); // instantiate ArrayList of the String type. 
+	   salesOfsalesman = new ArrayList<Double>();  // instantiation ArrayList of the double type. 
   }
   
   /**
@@ -47,30 +44,36 @@ public class SalesReporter {
   
   /**
    * This is a public method.</br>
-   * This method set the array length. and put the array data when you input the Salesman's name and Sales.</br>
+   * This method puts the array data when you input the Salesman's name and Sales.</br>
    */
   public void getData()
   {
-	  team = new Salesman[numOfSalesman]; // set the array length.
-	  for(int i=0; i < numOfSalesman; i++) // From i to numberOfSalesman. the loop  is continued.
+	  int i = 0; // set the integer variable, i that is 0.
+	  while(true) // This is a infinite loop
 	  {
+		  
+		  String haha = ""; // set the string variable, haha that is null
 		  Scanner myScanner = new Scanner(System.in); // Prepares to read from the keyboard.
 		  
-		  System.out.println("Enter data for associate number " + (i+1)); // display the parenthesis and integer.
-		  
-		  System.out.printf("Enter name: "); // display the parenthesis.
-		  String name = myScanner.nextLine(); // scan the String variable, name. 
-		  
-		  System.out.printf("Enter Sales: "); // display the parenthesis.
-		  double sales = myScanner.nextDouble(); // scan the double variable, sales.
-		  
-		  Salesman mySalesman = new Salesman(); // instantiate Salesman class.
-		  
-		  mySalesman.setmName(name); // perform the setmName method of Salesman class.
-		  mySalesman.setSales(sales); // perform the setSales method of Salesman class.
-		  team[i] = mySalesman; // put the object.
-	  }
-	  
+		   System.out.println("Enter data for associate number " + (i+1)); // display the parenthesis and integer.
+		   i++;
+		   System.out.printf("Enter name: "); // display the parenthesis.
+		   String name = myScanner.nextLine(); // scan the String variable, name. 
+		   
+		   System.out.printf("Enter Sales: "); // display the parenthesis.
+		   double sales = myScanner.nextDouble(); // scan the double variable, sales.
+		
+		   mName.add(name); // add a name variable to the arraylist, mName.
+		   salesOfsalesman.add(sales);// add a sales variable to the arraylist, mName.
+		 
+		   System.out.print("Do you want to add the salesman?(Yes/No): "); // display the parenthesis. 
+		   haha = myScanner.next(); // scan the String variable, haha.
+		   
+		   if(!haha.equals("yes")) // if haha is not equal to "yes"
+		    {
+			  break; // the loop is quit.
+		    }
+	   }
   }
   
   /**
@@ -81,13 +84,12 @@ public class SalesReporter {
   {
 	  double sum = 0 ; // set the double variable, sum to calculate sum of Salesmen's Sales.
 	  
-	  for(int i=0; i<team.length; i++) // From i to numberOfSalesman. the loop is continued.
+	  for(int i=0; i<mName.size(); i++) // From i to numberOfSalesman. the loop is continued.
 	  {
-		  double sales = team[i].getSales(); // assign array variable to double variable.
-		  sum = sum + sales; // set the sum variable after add the sales variable
+		  sum = sum + salesOfsalesman.get(i); // set the sum variable after add the sales variable
 	  }
 	  
-	  averageSales = sum / team.length; // calculate the average.
+	  averageSales = sum / mName.size(); // calculate the average.
 	  System.out.println("Average Sales per associate is $"+averageSales); // display the average.
   }
   
@@ -99,11 +101,11 @@ public class SalesReporter {
    */
    public void getHighestSales()
    {
-	  
-	   for(int i=0; i<team.length-1; i++) // From i to (numberOfSalesman-1). the loop is continued.
-		  {
-			 if(team[i].getSales() < team[i+1].getSales()) // if the i salesman's sales is less than (i+1) salesman's sales.
-				 highestSales = team[i+1].getSales(); // set the (i+1) salesman's sales to double variable.
+	   
+	   for(int i=0; i < salesOfsalesman.size()-1; i++) // From i to (numberOfSalesman-1). the loop is continued.
+	      {
+			 if(salesOfsalesman.get(i) < salesOfsalesman.get(i+1)) // if the i salesman's sales is less than (i+1) salesman's sales.
+				 highestSales = salesOfsalesman.get(i+1); // set the (i+1) salesman's sales to double variable.
 		  }
 		  
 		  System.out.println("The highest sales figure is $" + highestSales); // display the Hightest sales.
@@ -116,47 +118,47 @@ public class SalesReporter {
    public void printSalesman()
    {
 	   System.out.println("The following had the highest sales: "); // display the parenthesis.
-	   for(int i=0; i < team.length;i++)// From i to the length of team array, the loop is continued.
+	   for(int i=0; i < mName.size();i++)// From i to the length of team array, the loop is continued.
 	   {
-		   if(team[i].getSales() == highestSales) // if i salesman's sales is equal to hightestSales.
+		   if(salesOfsalesman.get(i) == highestSales) // if i salesman's sales is equal to hightestSales.
 		   {
-			   System.out.println("name: " + team[i].getName()); // display i salesman's name.
-			   System.out.println("Sales: "+team[i].getSales()); // display i salesman's sales.
-			   if(team[i].getSales() > averageSales) // if i salesman's sales is bigger than average of salesmen's sales
+			   System.out.println("name: " + mName.get(i)); // display i salesman's name.
+			   System.out.println("Sales: "+ salesOfsalesman.get(i)); // display i salesman's sales.
+			   if(salesOfsalesman.get(i) > averageSales) // if i salesman's sales is bigger than average of salesmen's sales
 			   {
-				   System.out.println(team[i].getSales()-averageSales + " above the average."); // display how many above the average.
+				   System.out.println(salesOfsalesman.get(i)-averageSales + " above the average."); // display how many above the average.
 			   }
-			   else if(team[i].getSales() == averageSales) // if i salesman's sales is same as average of salesmen's sales
+			   else if(salesOfsalesman.get(i) == averageSales) // if i salesman's sales is same as average of salesmen's sales
 			   {
 				   System.out.println(averageSales  + " same the average"); // display the parenthesis.
 			   }
 			   else // if i salesman's sales is less than average of salesmen's sales
 			   {
-				   System.out.println(team[i].getSales() - averageSales + " below the average"); //display how many below the average.
+				   System.out.println(salesOfsalesman.get(i) - averageSales + " below the average"); //display how many below the average.
 			   }
 		   }
 	   }
 	   
 	   System.out.println("The rest performed as follows: "); // display the parenthesis.
-	   for (int i=0; i < team.length; i++) // From i to the length of team array, the loop is continued.
+	   for (int i=0; i < mName.size(); i++) // From i to the length of team array, the loop is continued.
 	   {
 		   
-		   if(team[i].getSales() != highestSales) // if i salesman's sales isn't equal to hightestSales.
+		   if(salesOfsalesman.get(i) != highestSales) // if i salesman's sales isn't equal to hightestSales.
 		   {
-               System.out.println("Name: " + team[i].getName()); // display i salesman's name.
-               System.out.println("Sales: "+ team[i].getSales());// display i salesman's sales.
+               System.out.println("Name: " + mName.get(i)); // display i salesman's name.
+               System.out.println("Sales: "+ salesOfsalesman.get(i));// display i salesman's sales.
 		   
-		    if(team[i].getSales() > averageSales)// if i salesman's sales is bigger than average of salesmen's sales
+		    if(salesOfsalesman.get(i) > averageSales)// if i salesman's sales is bigger than average of salesmen's sales
 		    {
-			   System.out.println(averageSales - team[i].getSales() + " above the average.");// display how many above the average.
+			   System.out.println(averageSales - salesOfsalesman.get(i) + " above the average.");// display how many above the average.
 		    }
-		    else if(team[i].getSales() == averageSales)// if i salesman's sales is same as average of salesmen's sales
+		    else if(salesOfsalesman.get(i) == averageSales)// if i salesman's sales is same as average of salesmen's sales
 		    {
 			   System.out.println(averageSales  + " same the average"); // display the parenthesis.
 		    }
 		    else // if i salesman's sales is less than average of salesmen's sales
 		    {
-			   System.out.println(averageSales - team[i].getSales() + " below the average"); //display how many below the average.
+			   System.out.println(averageSales - salesOfsalesman.get(i) + " below the average"); //display how many below the average.
 		    }
 		   }
 	   }
